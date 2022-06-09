@@ -1,0 +1,23 @@
+{
+  "name": "tsr-ts-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "build": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "test": "echo 'NOOP'",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.7.3",
+    "sourcemap-codec": "^1.4.8"
+  },
+  "devDependencies": {
+    "@tsconfig/node12": "^1.0.0",
+    "@types/node": "^13.9.0"
+  }
+}
