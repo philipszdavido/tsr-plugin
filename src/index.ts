@@ -13,12 +13,12 @@ function init(modules: { typescript: typeof ts }): ts.server.PluginModule {
 
   function create(info: ts.server.PluginCreateInfo) {
     const logger = new Logger(info.project.projectService.logger);
-    if (!isSvelteProject(info.project.getCompilerOptions())) {
-      logger.log(
-        "Detected that this is not a Svelte project, abort patching TypeScript"
-      );
-      return info.languageService;
-    }
+    // if (!isSvelteProject(info.project.getCompilerOptions())) {
+    //   logger.log(
+    //     "Detected that this is not a Svelte project, abort patching TypeScript"
+    //   );
+    //   return info.languageService;
+    // }
 
     // if (isPatched(info.languageService)) {
     //   logger.log("Already patched. Checking tsconfig updates.");
@@ -30,25 +30,25 @@ function init(modules: { typescript: typeof ts }): ts.server.PluginModule {
     //   return info.languageService;
     // }
 
-    configManager.updateConfigFromPluginConfig(info.config);
-    if (configManager.getConfig().enable) {
-      logger.log("Starting Svelte plugin");
-    } else {
-      logger.log("Svelte plugin disabled");
-      logger.log(info.config);
-    }
+    // configManager.updateConfigFromPluginConfig(info.config);
+    // if (configManager.getConfig().enable) {
+    //   logger.log("Starting Svelte plugin");
+    // } else {
+    //   logger.log("Svelte plugin disabled");
+    //   logger.log(info.config);
+    // }
 
     // This call the ConfiguredProject.getParsedCommandLine
     // where it'll try to load the cached version of the parsedCommandLine
-    const parsedCommandLine = info.languageServiceHost.getParsedCommandLine?.(
-      getConfigPathForProject(info.project)
-    );
+    // const parsedCommandLine = info.languageServiceHost.getParsedCommandLine?.(
+    //   getConfigPathForProject(info.project)
+    // );
 
-    const svelteOptions = parsedCommandLine?.raw?.svelteOptions || {
-      namespace: "svelteHTML",
-    };
-    logger.log("svelteOptions:", svelteOptions);
-    logger.debug(parsedCommandLine?.wildcardDirectories);
+    // const svelteOptions = parsedCommandLine?.raw?.svelteOptions || {
+    //   namespace: "svelteHTML",
+    // };
+    // logger.log("svelteOptions:", svelteOptions);
+    // logger.debug(parsedCommandLine?.wildcardDirectories);
 
     // const snapshotManager = new SvelteSnapshotManager(
     //   modules.typescript,
